@@ -124,10 +124,8 @@ public class Main {
             (" ~----( ~   Y.  )
             It looks like we will soon have more rabbits!""";
 
-        System.out.println("Please enter the number of the habitat you would like to view: ");
         Scanner sc = new Scanner(System.in);
-        int userNum = sc.nextInt();
-        System.out.println();
+        String userNum = "";
         ArrayList<String> animalsArr = new ArrayList<>();
         animalsArr.add(camel);
         animalsArr.add(lion);
@@ -135,10 +133,20 @@ public class Main {
         animalsArr.add(goose);
         animalsArr.add(bat);
         animalsArr.add(rabbit);
-        System.out.println(animalsArr.get(userNum));
-        System.out.println("""
-                ---
-                You've reached the end of the program. To check another habitat, please restart the watcher.
-                """);
+
+        while(!userNum.equalsIgnoreCase("exit")) {
+
+            System.out.println("Please enter the number of the habitat you would like to view: ");
+            userNum = sc.nextLine();
+            if(userNum.equalsIgnoreCase("exit")) {
+                System.out.println("See you later!");
+            } else {
+                System.out.println(animalsArr.get(Integer.parseInt(userNum)));
+                System.out.println("""
+                    ---
+                    You've reached the end of the program. To check another habitat, please restart the watcher.
+                    """);
+            }
+        }
     }
 }
